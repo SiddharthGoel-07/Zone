@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block URLs</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fb; margin: 0; padding: 0; }
+        .container { max-width: 370px; margin: 30px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 28px 24px; }
+        h2 { text-align: center; color: #2d3a4b; margin-bottom: 18px; }
+        .section { margin-bottom: 22px; }
+        .url-row { display: flex; gap: 8px; margin-bottom: 10px; }
+        .url-row input[type="text"] { flex: 2; }
+        .url-row input[type="number"] { flex: 1; }
+        .add-btn, .verify-btn, .submit-btn, .code-btn { background: #4f8cff; color: #fff; border: none; border-radius: 6px; padding: 7px 14px; cursor: pointer; font-weight: 500; transition: background 0.2s; }
+        .add-btn:hover, .verify-btn:hover, .submit-btn:hover, .code-btn:hover { background: #2563eb; }
+        .remove-btn { background: #ff4f4f; color: #fff; border: none; border-radius: 6px; padding: 7px 10px; cursor: pointer; font-weight: 500; }
+        .remove-btn:hover { background: #d32f2f; }
+        .disabled { opacity: 0.6; pointer-events: none; }
+        label { color: #2d3a4b; font-size: 15px; margin-bottom: 4px; display: block; }
+        input, button { font-size: 15px; }
+        #message { text-align: center; color: #2563eb; margin-top: 10px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Block URLs</h2>
+        <div class="section" id="urlSection">
+            <label>URLs to block:</label>
+            <div id="urlList">
+                <div class="url-row">
+                    <input type="text" placeholder="https://example.com" class="url-input">
+                    <input type="number" min="1" placeholder="Minutes" class="duration-input">
+                    <button type="button" class="remove-btn hidden">✕</button>
+                </div>
+            </div>
+            <button type="button" class="add-btn" id="addUrlBtn">+ Add More</button>
+        </div>
+        <div class="section" id="accountabilitySection">
+            <label for="partnerEmail">Accountability Partner Email:</label>
+            <input type="email" id="partnerEmail" placeholder="partner@email.com">
+            <button type="button" class="verify-btn" id="verifyEmailBtn">Verify</button>
+            <div id="codeSection" class="hidden">
+                <input type="text" id="verificationCode" placeholder="Enter verification code">
+                <button type="button" class="code-btn" id="submitCodeBtn">Submit Code</button>
+            </div>
+        </div>
+        <button type="button" class="submit-btn disabled" id="blockBtn">Block</button>
+        <div id="message"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
