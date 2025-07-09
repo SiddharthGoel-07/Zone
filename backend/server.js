@@ -23,7 +23,7 @@ const connectDB= async()=>{
    
     try {
         
-        const conn=await mongoose.connect("mongodb+srv://sid:HBfNHQV4uZ-..27@cluster0.floj3xq.mongodb.net/Zone?retryWrites=true&w=majority&appName=Cluster0")
+        const conn=await mongoose.connect(process.env.MONGO_URI)
         .then(() => console.log("✅ Connected to MongoDB Atlas"))
         
     } catch (error) {
